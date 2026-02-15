@@ -1,0 +1,1037 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>KP用資料｜死にぞこないのハッピーバースデイ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Roboto+Mono:wght@500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      /* Modern Color Palette (Notion-like / Clean) */
+      --text-main: #37352f;
+      --text-sub: #787774;
+      --text-light: #9b9a97;
+      --bg-body: #ffffff;
+      --bg-sub: #f7f6f3;
+      --border: #e9e9e7;
+      
+      /* Semantic Colors - Muted/Pastel */
+      --read-bg: #f1f7f9;
+      --read-accent: #4b6e83;
+      
+      --proc-bg: #f0f5f1;
+      --proc-accent: #4a7a58;
+      
+      --kp-bg: #fdfdfc;
+      --kp-accent: #d9730d;
+      
+      --kpc-text: #5f5e5b;
+      --kpc-border: #e0e0de;
+
+      --danger: #e03e3e;
+      --success: #0f7b6c;
+
+      /* Spacing */
+      --sp-xs: 4px;
+      --sp-sm: 8px;
+      --sp-md: 16px;
+      --sp-lg: 24px;
+      --sp-xl: 48px;
+
+      /* Typography */
+      --font-base: 'Noto Sans JP', sans-serif;
+      --font-mono: 'Roboto Mono', monospace;
+    }
+
+    /* Reset & Base */
+    *, *::before, *::after { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background-color: var(--bg-body);
+      color: var(--text-main);
+      font-family: var(--font-base);
+      line-height: 1.8;
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    h1, h2, h3, h4, p, ul, ol { margin: 0; }
+    a { color: inherit; text-decoration: none; }
+
+    /* Layout */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 var(--sp-md) 120px;
+    }
+
+    /* Header */
+    header {
+      padding: 40px 0 20px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+    }
+    h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: var(--sp-sm);
+      color: var(--text-main);
+    }
+    .meta-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.85rem;
+      color: var(--text-sub);
+    }
+    .tag {
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--bg-sub);
+      border: 1px solid var(--border);
+    }
+
+    /* Navigation (Sticky) */
+    .nav-bar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 0;
+      margin-bottom: 40px;
+    }
+    .nav-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 var(--sp-md);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .nav-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-sub);
+      transition: all 0.2s;
+      background: transparent;
+    }
+    .nav-btn:hover {
+      background: var(--bg-sub);
+      color: var(--text-main);
+    }
+    .nav-num {
+      display: inline-block;
+      width: 18px;
+      height: 18px;
+      line-height: 18px;
+      text-align: center;
+      background: var(--text-light);
+      color: white;
+      border-radius: 50%;
+      font-size: 10px;
+      margin-right: 6px;
+    }
+    .nav-btn:hover .nav-num { background: var(--text-main); }
+
+    /* Sections */
+    section {
+      scroll-margin-top: 140px;
+      margin-bottom: 100px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin-bottom: 32px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid var(--text-main);
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    h2 .phase-num {
+      font-family: var(--font-mono);
+      font-size: 1rem;
+      color: var(--text-light);
+      font-weight: 400;
+    }
+
+    /* Redesigned H3: No left border, more vertical space */
+    h3 {
+      font-size: 1.2rem;
+      margin: 64px 0 24px;
+      padding: 0;
+      border: none;
+      color: var(--text-main);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    h3::after {
+      content: "";
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background: var(--text-light);
+      border-radius: 2px;
+    }
+    
+    .trigger-badge {
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--text-sub);
+      background: var(--bg-sub);
+      padding: 2px 10px;
+      border-radius: 999px;
+      margin-left: 12px;
+    }
+
+    /* Callouts: Removed border-radius on the left to fix the "clash" with the accent bar */
+    .callout {
+      border-radius: 0 6px 6px 0; /* Left corners are square */
+      padding: 18px 24px;
+      margin-bottom: 24px;
+      position: relative;
+      border: 1px solid var(--border);
+      border-left-width: 4px; /* Thicker accent bar */
+    }
+    
+    /* READ */
+    .callout.read {
+      background-color: var(--read-bg);
+      border-left-color: var(--read-accent);
+    }
+    .callout.read::before {
+      content: "描写";
+      position: absolute;
+      top: -11px;
+      left: 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--read-accent);
+      background: var(--bg-body); /* Body color to punch through the box */
+      padding: 0 8px;
+      border: 1px solid var(--read-accent);
+      border-radius: 4px;
+    }
+
+    /* PROC */
+    .callout.proc {
+      background-color: var(--proc-bg);
+      border-left-color: var(--proc-accent);
+    }
+    .callout.proc::before {
+      content: "処理";
+      position: absolute;
+      top: -11px;
+      left: 12px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--proc-accent);
+      background: var(--bg-body);
+      padding: 0 8px;
+      border: 1px solid var(--proc-accent);
+      border-radius: 4px;
+    }
+
+    /* KP: Minimalist without box */
+    .callout.kp {
+      background: transparent;
+      padding: 0 0 0 20px;
+      border: none;
+      border-left: 2px solid var(--kp-accent);
+      border-radius: 0;
+      margin: 24px 0;
+      color: var(--text-sub);
+      font-size: 0.95rem;
+    }
+    .callout.kp .label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--kp-accent);
+      margin-bottom: 4px;
+      display: block;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* KPC Reaction: More distinct from boxes */
+    .kpc-reaction {
+      margin: 32px 0 32px 40px; /* More indent */
+      padding: 0;
+      border: none;
+    }
+    .kpc-reaction .label {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .kpc-reaction .label::before {
+      content: "";
+      width: 12px;
+      height: 1px;
+      background: var(--kpc-border);
+    }
+    .kpc-reaction p {
+      font-size: 0.95rem;
+      color: var(--kpc-text);
+      margin-bottom: 10px;
+      line-height: 1.6;
+      font-family: var(--font-base);
+    }
+    .kpc-reaction .mono {
+      font-family: var(--font-base);
+    }
+
+    /* Flow Guide */
+    .flow-guide {
+      background: var(--bg-sub);
+      border: none;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 32px;
+    }
+    .flow-guide h4 {
+      font-size: 0.85rem;
+      color: var(--text-main);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 700;
+    }
+    .flow-guide h4::before { content: "⚡"; font-size: 1rem; }
+    .flow-guide ul {
+      margin: 0;
+      padding-left: 20px;
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+    .flow-guide li { margin-bottom: 6px; }
+
+    /* Utility */
+    .bold { font-weight: 700; color: var(--text-main); }
+    .text-sm { font-size: 0.85rem; color: var(--text-sub); }
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
+    @media (max-width: 700px) { .grid-2 { grid-template-columns: 1fr; } }
+    
+    .card {
+      background: var(--bg-body);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    
+    table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    th, td { border-bottom: 1px solid var(--border); padding: 12px 8px; text-align: left; }
+    th { color: var(--text-sub); font-weight: 500; width: 30%; }
+
+    /* Print */
+    @media print {
+      body { font-size: 12px; }
+      .nav-bar { display: none; }
+      .container { padding: 0; max-width: none; }
+      section { break-inside: avoid; }
+      .callout { border: 1px solid #ccc; background: white !important; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="container" style="padding-bottom:0; margin-bottom:0;">
+    <div class="meta-tags" style="margin-bottom:8px;">
+      <span class="tag">CoC 6版</span>
+      <span class="tag">PC1人+KPC</span>
+      <span class="tag">2〜3時間</span>
+    </div>
+    <h1>KP用進行資料｜死にぞこないのハッピーバースデイ</h1>
+    <p class="text-sm">PDFとして保存すると印刷にも使えます</p>
+  </div>
+</header>
+
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <a href="#quick" class="nav-btn"><span class="nav-num">Q</span>クイック参照</a>
+    <a href="#ph1" class="nav-btn"><span class="nav-num">1</span>違和感</a>
+    <a href="#ph2" class="nav-btn"><span class="nav-num">2</span>調査</a>
+    <a href="#ph3" class="nav-btn"><span class="nav-num">3</span>探索</a>
+    <a href="#ph4" class="nav-btn"><span class="nav-num">4</span>持久戦</a>
+    <a href="#ph5" class="nav-btn"><span class="nav-num">5</span>誕生日</a>
+    <a href="#hound" class="nav-btn">猟犬</a>
+    <a href="#pre-scenario" class="nav-btn" style="margin-left:auto;">PL用背景</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- ============================== INTRO ============================== -->
+  <div class="card" style="margin-bottom:56px;">
+    <h4 class="text-sm" style="margin-bottom:10px;">■シナリオについて</h4>
+    <p>今日が終われば、明日は誕生日だ。<br>それだけのことが、どうしてこんなに難しいんだろう。</p>
+    <p style="margin-top:10px;">――死にぞこないの二人に贈る、一夜限りのパラドックス。</p>
+
+    <h4 class="text-sm" style="margin-top:20px; margin-bottom:8px;">【概要】</h4>
+    <table>
+      <tr><th>舞台</th><td>現代日本（季節不問）</td></tr>
+      <tr><th>時間</th><td>ボイセ2～3時間</td></tr>
+      <tr><th>人数</th><td>PC1人（KPCとのタイマン）</td></tr>
+      <tr><th>あるとよい技能</th><td>探索技能（目星、図書館）</td></tr>
+      <tr><th>システム</th><td>CoC6版・7版</td></tr>
+      <tr><th>ロスト率</th><td>低</td></tr>
+      <tr><th>後遺症</th><td>なし</td></tr>
+    </table>
+
+    <h4 class="text-sm" style="margin-top:18px; margin-bottom:8px;">【PC条件】</h4>
+    <ul class="text-sm">
+      <li>KPCとは「互いに命を預けてもいい」と思える深い関係性であること。二人だけで出かける程度には仲がいいこと。当てはまるなら恋人、家族、友人、仲間なんでもOK。</li>
+      <li>明日はPCの誕生日である（という設定をつけてよいPC）。</li>
+    </ul>
+
+    <h4 class="text-sm" style="margin-top:18px; margin-bottom:8px;">【こんな人におすすめ】</h4>
+    <ul class="text-sm">
+      <li>PCの誕生日を祝いたいけどCoCっぽくハラハラもしたい！</li>
+      <li>でも誕生日にロストは嫌だ</li>
+      <li>PCとKPCの絆をより深めたい。なんぼ深めてええもんですからね</li>
+    </ul>
+
+    <h4 class="text-sm" style="margin-top:18px; margin-bottom:8px;">【利用規約・まえがき】</h4>
+    <ul class="text-sm">
+      <li>本シナリオはフィクションです。実在の人物・団体・地名とは一切関係ありません。</li>
+      <li>神話生物や呪文について独自の解釈を含みます。</li>
+      <li>改変等は卓の雰囲気に合わせてご自由にどうぞ。</li>
+      <li>リプレイ動画や配信等での使用は歓迎しますが、ネタバレへの配慮をお願いします。</li>
+    </ul>
+  </div>
+
+  <!-- ============================== QUICK REF ============================== -->
+  <section id="quick">
+    <h2><span class="phase-num">Reference</span> クイックリファレンス</h2>
+    <div class="grid-2">
+      <div class="card">
+        <h4 class="text-sm" style="margin-bottom:8px;">シナリオの核心</h4>
+        <p class="bold" style="margin-bottom:12px;">互いを犠牲にして守り合った二人が、今度は一緒に生き延びる話。</p>
+        <ul class="text-sm">
+          <li><span class="bold" style="color:var(--success)">勝利</span>：0:00にKPCがPCへ「誕生日おめでとう」と祝福 → 存在確定</li>
+          <li><span class="bold" style="color:var(--danger)">失敗</span>：PC自死／0:00までに確定不可／猟犬顕現</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 class="text-sm" style="margin-bottom:8px;">二重の危機</h4>
+        <table>
+          <tr><th>PC</th><td><span class="bold">存在が曖昧</span>（手の輪郭がぼやける）</td></tr>
+          <tr><th>KPC</th><td><span class="bold">猟犬に狙われている</span>（角からの気配）</td></tr>
+        </table>
+        <h4 class="text-sm" style="margin-top:16px; margin-bottom:8px;">時系列</h4>
+        <table>
+          <tr><th>誕生日2日前</th><td>事故。PCがKPCを庇い致命傷。KPCが呪文使用</td></tr>
+          <tr><th>前日（昼）</th><td><span class="bold">開始</span>：違和感の発見</td></tr>
+          <tr><th>前日（夕方）</th><td>調査：現場 → 新聞社 → オカルト専門家</td></tr>
+          <tr><th>前日（夜）</th><td>探索：図書館で『金枝篇』。持久戦へ</td></tr>
+          <tr><th>当日 0:00</th><td><span class="bold">祝福</span>。世界確定</td></tr>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================== PHASE 1 ============================== -->
+  <section id="ph1">
+    <h2><span class="phase-num">Phase 1</span> 違和感（前日・昼）</h2>
+    
+    <div class="flow-guide">
+      <h4>進行ガイド：日常から非日常へ</h4>
+      <ul>
+        <li><span class="bold">開始状況</span>：PCとKPCが二人きりで過ごしている（自宅、カフェ、いつもの場所）。</li>
+        <li><span class="bold">RP方針</span>：まずは穏やかな日常を演出。「明日は誕生日だな」「何食べたい？」など、平和な会話を少し楽しませてから、不意にイベント1を落とす。</li>
+      </ul>
+    </div>
+
+    <h3>イベント1：存在の曖昧さ <span class="trigger-badge">タイミング：会話が一段落した時</span></h3>
+    <div class="callout read">
+      <p>何気ない日常の中で、ふと自分の手が目に入る。<br>
+      ——おかしい。</p>
+      <p>手の輪郭が滲んでいる。水に落とした絵の具のように、指先の境界が空気に溶けかけている。<br>
+      目をこすっても変わらない。瞬きをしても戻らない。</p>
+      <p>気のせいだ、と思おうとする。<br>
+      でも——<span class="bold">自分の存在がゆっくりと薄れていく</span>感覚が、胸の奥にじわりと広がっている。<br>
+      それは恐怖というより、もっと静かなもの。<br>
+      砂時計の砂が、音もなく落ちていくような。</p>
+    </div>
+    <div class="callout kp">
+      <span class="label">KP情報</span>
+      PCに「このままだと消えてしまう」という直感を与える。まだ理由は不明。
+    </div>
+
+    <h3>イベント2：写真の発見 <span class="trigger-badge">タイミング：PLがスマホを見た時 / 通知が来た時</span></h3>
+    <div class="flow-guide">
+      <h4>導入のコツ</h4>
+      <ul>
+        <li>PLが自発的にスマホを見ない場合、「ピロン」と通知音を鳴らすか、KPCに「そういえば一昨日撮った写真送ってよ」と言わせてカメラロールを開かせる。</li>
+      </ul>
+    </div>
+    <div class="callout read">
+      <p>何となくスマホを手に取る。カメラロールをスクロールしていると、見覚えのない写真がある。</p>
+      <p>一昨日の日付。どこかの建物——コンクリートの壁と、妙に暗い路地。<br>
+      行った記憶がない。撮った記憶もない。なのに、写真は確かにそこにある。</p>
+      <p>画面を見つめていると、写真の中の影が一瞬だけ揺れた——ように見えた。<br>
+      気のせいだろうか。</p>
+    </div>
+    <div class="callout proc">
+      <p><span class="bold">アイデア</span>：成功で「一昨日行く予定だった場所だ」と気づく。</p>
+    </div>
+    <div class="kpc-reaction">
+      <span class="label">KPCの反応（A/B/C）</span>
+      <p>「……どこだっけ。出かけたか？ ……いや、思い出せない。なんでだ」</p>
+      <p>「行ってないよ。用事ができてキャンセルしたろ。……したよな？」</p>
+      <p>「分からない。ここ何日か、なんか頭にモヤがかかってるみたいで……」</p>
+      <p class="text-sm">共通：一瞬だけ間がある。KPC自身も記憶が曖昧で、取り繕おうとするが上手くいかない。</p>
+    </div>
+
+    <h3>イベント3：新聞の発見 <span class="trigger-badge">タイミング：KPCが鞄を動かした時 / 移動しようとした時</span></h3>
+    <div class="callout read">
+      <p>KPCが鞄を漁っていると、ばさり、と何かが床に落ちる. 新聞だ。<br>
+      日付は昨日——つまり今日の前日。小さな記事が目に入る。</p>
+      <p class="bold">『○○地区で爆発事故。負傷者多数。身元不明者の可能性あり。調査中。』</p>
+      <p>記事によれば、事故は"一昨日"に起きたとある。写真と同じ日だ。</p>
+    </div>
+    <div class="kpc-reaction">
+      <span class="label">KPCの反応</span>
+      <p>「……なんだこれ。俺の鞄にあったのか。買った覚えないぞ……」（手が震えている）</p>
+      <p>「知らない。入れてない。……なんで俺がこんなもの持ってるんだ」（動揺を隠そうとしている）</p>
+      <p>「なんで……いつの間に……」（新聞を持つ手を、もう片方の手で抑える）</p>
+      <p class="text-sm">記事を読んで：</p>
+      <p>「……これ、一昨日行く予定だった場所じゃないか？ でも事故なんて——ニュース、見てないよな？」</p>
+      <p>「爆発？ そんなの聞いてない。ネットにも出てない。なのに新聞には載ってる——おかしいだろ」</p>
+    </div>
+
+    <h3>イベント4：最初の兆候 <span class="trigger-badge">タイミング：新聞の話題で空気が重くなった時</span></h3>
+    <div class="callout read">
+      <p>——その時。視界の端で、何かが動いた。</p>
+      <p>部屋の角。天井と壁が交わるあたり。他の場所より、少しだけ暗い。<br>
+      影が"集まっている"。暗がりの奥から、<span class="bold">何かがじっと見返している</span>。</p>
+      <p>空気が重い。呼吸が浅くなる。<br>
+      本能が、はっきりと告げている——<span class="bold">あれと目を合わせるな</span>。</p>
+    </div>
+    <div class="callout proc">
+      <p><span class="bold" style="color:var(--danger)">SANチェック：0/1</span></p>
+    </div>
+    <div class="kpc-reaction">
+      <span class="label">KPCの反応</span>
+      <p>「……出よう。今すぐ。荷物はいい」（PCの腕を掴んで立ち上がる。顔が青白い）</p>
+      <p>「あの角——見るな。頼むから見るな」（小声。歯の根が合っていない）</p>
+      <p>「やばい。ここにいちゃ駄目だ——行くぞ、走れ」（PCの手を引く。振り返らない）</p>
+    </div>
+
+    <div class="flow-guide">
+      <h4>次のフェーズへ</h4>
+      <ul>
+        <li>KPCに「ここにいたくない」「新聞の場所、確かめに行こう」と提案させて外へ連れ出す。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ============================== PHASE 2 ============================== -->
+  <section id="ph2">
+    <h2><span class="phase-num">Phase 2</span> 調査（前日・夕方）</h2>
+
+    <div class="flow-guide">
+      <h4>進行ガイド：違和感の確信へ</h4>
+      <ul>
+        <li><span class="bold">移動描写</span>：電車やタクシーでの移動を挟む。「外の空気は普段通りだが、PCの手の違和感だけが消えない」と描写し、緊張感を持続させる。</li>
+        <li><span class="bold">聞き込み</span>：現場に着いたら、通行人NPCを出すか、KPCに「あの人に聞いてみよう」と促させる。</li>
+      </ul>
+    </div>
+
+    <h3>イベント1：現場調査</h3>
+    <div class="callout read">
+      <p>新聞の記事にあった場所へ向かう。電車を降り、目的地の通りに出る。<br>
+      ——何もない。</p>
+      <p>拍子抜けするほど静かだった。<br>
+      事故の痕跡はない。焦げ跡もない。規制線もない。<br>
+      道路にはひび一つなく、人々は何事もなかったかのように歩いている。</p>
+      <p>新聞には"爆発事故"と書いてあった。でも、ここにはその痕跡が何一つない。</p>
+      <hr style="border:0; border-top:1px dashed var(--border); margin:12px 0;">
+      <p>通行人に話を聞いてみる。</p>
+      <p>「爆発音？ ああ、一昨日ね。すごい音がして窓が揺れた。でも外に出てみたら——何もなかったんだよ。消防車も来なかった。おかしいだろ？」</p>
+      <p>「私も聞きました。ドーンって。地面も揺れた気がして、怖くなって家族に電話したんですけど。テレビでもネットでも何も報道されてなくて。……夢でも見たのかと思ってたんですけど」</p>
+      <p>「うちの犬がその時だけ怯えて、ずっと吠えてたんだ。普段は大人しいのに。気のせいにしちゃ、変だよな」</p>
+    </div>
+    <div class="callout kp">
+      <span class="label">KP情報</span>
+      「音だけ聞こえた（体感はある）」が「事実は起きていない」。世界が重なっている証拠。
+    </div>
+    <div class="kpc-reaction">
+      <span class="label">KPCの反応</span>
+      <p>「音だけ聞こえて、何もない……？ そんなことあるか？」（新聞と現場を見比べて、何度も首を振る）</p>
+      <p>「じゃあ、この新聞は何なんだ。嘘が書いてあるのか？ ——でも、みんな音は聞いてるんだぞ」</p>
+      <p>「……二つ、ある気がする。起きたのと、起きてないのと。両方ここにあるんだ」（自分で言って、ぞっとした顔をする）</p>
+    </div>
+
+    <h3>イベント2：フラッシュバック① <span class="trigger-badge">タイミング：現場に立った瞬間</span></h3>
+    <div class="callout read">
+      <p>——現場に立った、その瞬間。<br>
+      頭の中に、映像が流れ込んでくる。自分の意思とは無関係に——強制的に。</p>
+      <p>——<span class="bold">爆発</span>。<br>
+      ——空気が裂ける。熱が肌を焼く。<br>
+      ——誰かの叫び声。自分の叫び声かもしれない。</p>
+      <p>——自分の体が動いている。考えるより先に、<span class="bold">誰かを押しのけている</span>。</p>
+      <p>——痛い。熱い。背中が焼ける。<br>
+      ——でも、この人だけは——</p>
+      <p>映像が途切れる。<br>
+      気がつくと、膝が折れかけている。自分の手を見る。輪郭が——さっきよりも、<span class="bold">さらにぼやけている</span>。</p>
+    </div>
+    <div class="callout proc">
+      <p><span class="bold" style="color:var(--danger)">SANチェック：0/1</span></p>
+    </div>
+    <div class="kpc-reaction">
+      <span class="label">KPCの反応</span>
+      <p>「おい！ ——っ、大丈夫か。顔、真っ青だぞ。座れ、ここ座れ」（肩を抱えて支える）</p>
+      <p>「お前、今——俺を押しのけなかったか？ ……一昨日も、そうだった気が——」（何かを思い出しかけている）</p>
+    </div>
+
+    <h3>イベント3：新聞社へ連絡 <span class="trigger-badge">タイミング：現場で手詰まりになったら</span></h3>
+    <div class="flow-guide">
+      <h4>誘導のコツ</h4>
+      <ul>
+        <li>PLが次にどうするか迷っていたら、KPCに「新聞の発行元に聞いてみよう。住所か電話番号、載ってないか？」と言わせて新聞を確認させる。</li>
+      </ul>
+    </div>
+    <div class="callout read">
+      <p>新聞に印刷されている発行元に電話をかける。コール音が3回。受付を経て、担当者に繋がる。</p>
+      <p>「——はい、編集部の○○です。で、その新聞というのは……」</p>
+      <p>こちらの説明を聞いた担当者は、長い沈黙の後、ゆっくりと言う。</p>
+      <p>「<span class="bold">……すみません。その新聞は、うちでは発行していません。紙面のフォーマットは確かにうちのものですが、その号は存在しない</span>」</p>
+      <p>「——ただ」</p>
+      <p>担当者の声が、少しだけ変わる。</p>
+      <p>「<span class="bold">妙なんです。そんな記事を——書いたような、書いてないような。嫌な既視感がある。</span><br>
+      デスクに確認しても該当記事はないんですが……なんていうか、指が覚えてるっていうか。キーボードを打った感触だけが残ってるみたいな——」</p>
+      <p>一拍おいて、担当者は声のトーンを戻す。</p>
+      <p>「こういう話、嫌いじゃないんでね。——実は、オカルト方面にやたら詳しい知り合いがいるんですよ。<span class="bold">ちょっと相談してみます。連絡先、共有していいですか？</span>」</p>
+      <p class="text-sm">（最後にちゃっかり）「——あ、それとですね。もし何か"面白い話"に発展したら、また教えてもらえると。記事のネタ、常に探してるもんで。ははは」</p>
+    </div>
+
+    <h3>イベント4：オカルト専門家 <span class="trigger-badge">形式：対話</span></h3>
+    <div class="callout kp">
+      <span class="label">NPC：オカルト専門家</span>
+      THE・オタク。知識量はガチだがテンションがおかしい。早口。比喩が全部サブカル。情報を語るのが楽しくて仕方ない。<br>
+      部屋は本と資料の要塞。机の上にフィギュア3体とルーペ。お茶を出すがカップは触手デザイン。お香焚いてる。
+    </div>
+    
+    <!-- 導入 -->
+    <div class="callout read">
+      <span class="label" style="font-weight:700; color:var(--read-accent);">導入：部屋に入る</span>
+      <p>紹介されたマンションの一室。チャイムを押すと、ドアが勢いよく開く。<br>
+      メガネ。寝癖。部屋着。背後に壁一面の本棚と段ボールの山。妙にいい匂い——お香だ。</p>
+      <p>「お！ 来た来た！ ○○さんから聞いてるよ！ どうぞどうぞ、散らかってっけど——あ、そこの本踏まないで、絶版だから！！」</p>
+      <p>新聞と写真を渡す。専門家はルーペまで出してきて、しばらく黙って眺める。<br>
+      時折「ほう」「うっわマジか」「いやこれヤバ……」と呟く。目が輝いている。</p>
+      <p>「——<span class="bold">うわ〜〜、これ最ッ高だわ</span>。いい意味でも悪い意味でも。座って座って。お茶淹れるから——あ、このカップ気にしないで、触手っぽいのはデザインだから」</p>
+    </div>
+
+    <!-- 話題1 -->
+    <div class="callout proc">
+      <span class="label" style="color:var(--proc-accent); font-weight:700;">話題① 世界が二重になっている</span>
+      <p class="text-sm">PCが質問するか、専門家が「ねえ、これ見てどう思った？」と水を向ける。</p>
+    </div>
+    <div class="callout read">
+      <p>「OK、じゃあ結論からいくね。——<span class="bold">世界、二重になってる</span>」</p>
+      <p>「シュレディンガーの猫って知ってる？ 知らない？ ——えっとね、箱の中の猫が生きてるか死んでるか、開けるまで"両方"なの。観測するまで確定しない。<br>
+      <span class="bold">それが現実スケールで起きてる</span>。マジで。僕もびっくりしてる」</p>
+      <p>「事故が"起きた世界"と"起きなかった世界"が、<span class="bold">どっちも今ここに同時にある</span>。<br>
+      だから新聞は"出てる"し"出てない"。爆発音は"聞こえた"し"何もなかった"。<br>
+      矛盾じゃないの。両方本当なの。——ヤバくない？ 僕はヤバいと思う」</p>
+    </div>
+
+    <!-- 話題2 -->
+    <div class="callout proc">
+      <span class="label" style="color:var(--proc-accent); font-weight:700;">話題② 原因はPC</span>
+      <p class="text-sm">PCが質問するか、<span class="bold">アイデア</span>で気づく。または専門家がPCの手を見て切り出す。</p>
+    </div>
+    <div class="callout read">
+      <p>写真とPCの手を見比べて、急にテンションが落ちる。</p>
+      <p>「……ごめん、言いにくいんだけどさ。<span class="bold">原因、たぶんあなただ</span>」</p>
+      <p>「あなたの存在が曖昧になってんだよ。"いる"のか"いない"のか、<span class="bold">世界が判定できてない</span>。<br>
+      だから世界もどっちか選べない。AルートかBルートか、分岐先が決まんないままセーブデータが二重になってるみたいな……<br>
+      ——あ、ゲームやんない人？ えーと、つまり、下書きが2枚残ってて、どっちが本番か誰にも分かんない状態」</p>
+    </div>
+
+    <!-- 話題3 -->
+    <div class="callout proc">
+      <span class="label" style="color:var(--proc-accent); font-weight:700;">話題③ 猟犬が来ている</span>
+      <p class="text-sm">PCが質問するか、<span class="bold">オカルト/知識</span>。またはKPCが「角が暗い」と聞く。</p>
+    </div>
+    <div class="callout read">
+      <p>急に声が低くなる。</p>
+      <p>「——あー、やっぱもう来てるか。<span class="bold">早いな</span>……」</p>
+      <p>「文献では"<span class="bold">猟犬</span>"って呼ばれてる。時間の歪みに反応するやつ。<br>
+      角が暗い、視線を感じる、温度が下がる——それ全部<span class="bold)あいつらの"兆候"</span>だよ」</p>
+      <p>「嗅覚がとんでもないんだ。歪みの"匂い"を辿ってくる。<br>
+      ——で、見つけたら？ <span class="bold">喰う</span>。シンプルに。容赦なく」</p>
+      <p>「近づいてきてるよ。<span class="bold">間違いなく</span>。たぶん、もうかなり近い」</p>
+    </div>
+
+    <!-- 話題4 -->
+    <div class="callout proc">
+      <span class="label" style="color:var(--proc-accent); font-weight:700;">話題④ 解決策＝確定（方法は不明）</span>
+      <p class="text-sm">PCが質問するか、<span class="bold">説得/信用</span>。またはKPCが詰めて自動開示。</p>
+    </div>
+    <div class="callout read">
+      <p>お茶をずず、と啜る。ちょっと間を置いて。</p>
+      <p>「<span class="bold">解決策はある</span>よ。理屈の上では」</p>
+      <p>「あなたの存在を"確定"させる。<br>
+      あなたが<span class="bold">"いる"と世界が判定</span>すれば、歪みは消える。猟犬も用がなくなって帰る。<br>
+      ——ログアウトっていうか、接続切れるっていうか」</p>
+      <p>「……ただ、ごめんね。<span class="bold">確定の"方法"までは僕には分かんない</span>。<br>
+      そこは僕の守備範囲外っていうかさ。専門違い」</p>
+      <p>肩をすくめる。あっけらかんとしている。</p>
+    </div>
+
+    <!-- 話題5 -->
+    <div class="callout proc">
+      <span class="label" style="color:var(--proc-accent); font-weight:700;">話題⑤ 五芒星の魔法陣（時間稼ぎ）</span>
+      <p class="text-sm">PCが質問するか、専門家が「——あ、でもワンチャンある」と切り出す。</p>
+    </div>
+    <div class="callout read">
+      <p>立ち上がって本棚から古い紙束を引っ張り出す。ホコリが舞う。くしゃみ。</p>
+      <p>「確定の方法は分かんないけど、<span class="bold">時間稼ぎの方法</span>なら知ってる」</p>
+      <p>「五芒星の魔法陣。エルダーサインの——あ、知らないか。えーと、<span class="bold">バリアみたいなやつ</span>。<br>
+      これを正確に描いて、その中にいれば、猟犬はあなたたちを<span class="bold">"認識できなくなる"</span>。<br>
+      ステルス迷彩みたいなもん。見えない聞こえない嗅げない」</p>
+      <p>紙にさらさらと五芒星を描きながら。</p>
+      <p>「どのくらい保つかは正直分かんない。<span class="bold">数時間か、もう少しか</span>。<br>
+      動いたら解除されるし、陣から出たらアウト。でも——ないよりは全然マシでしょ」</p>
+      <p>描いた図をPCに渡す。</p>
+      <p>「——だから頼むよ。<span class="bold">生きて帰ってきてくれ</span>。<br>
+      後日、<span class="bold">レポート聞かせてほしい</span>んだ。コーヒーくらい奢るからさ。<br>
+      ……冗談じゃなく。マジで」</p>
+      <hr style="border: 0; border-top: 1px dashed var(--border); margin: 16px 0;">
+      <p>PCたちが帰ろうとすると、専門家がふと思い出したように声をかける。</p>
+      <p>「——<span class="bold">あ、そうだ</span>。確定の方法、僕には分かんないけどさ。<br>
+      "存在"とか"魂"とか、そういうのって<span class="bold">民俗学の方が詳しい</span>んだよね。<br>
+      僕はどっちかっていうと"怪物の方"の専門だからさ。ハハ」</p>
+      <p>「もし図書館行くなら、<span class="bold">フレイザーの『金枝篇』</span>あたり見てみ？<br>
+      あの本、"魂が不安定になる条件"とか"存在を繋ぎ止める儀礼"とか、<br>
+      <span class="bold">ドンピシャなこと書いてた気がする</span>んだよね。……たぶん。うろ覚えだけど」</p>
+      <p>「あと民俗学の棚、<span class="bold">誕生日とか通過儀礼とか祝祭</span>のあたり。<br>
+      "曖昧なものを確定させる"って、要は儀式じゃん？ そのへんにヒントあるかもよ」</p>
+      <p class="text-sm">（ドアを閉める直前に）「——あ、レポートの件マジだからね！ 連絡待ってるから！」</p>
+    </div>
+
+    <h3>イベント5：告白 <span class="trigger-badge">タイミング：専門家の部屋を出た直後</span></h3>
+    <div class="callout read">
+      <p>専門家の部屋を出て、階段を降りかけたその瞬間——<br>
+      また、来る。さっきよりも鮮明に。さっきよりも、長く。</p>
+      <p>——倒れている自分が見える。血。コンクリートに広がっていく、赤。<br>
+      ——耳鳴り。遠くでサイレンが鳴っている——いや、鳴っていない。<br>
+      ——誰かが泣いている。嗚咽が聞こえる。</p>
+      <p>——<span class="bold">KPCだ</span>。</p>
+      <p>——KPCが何かを唱えている。<br>
+      ——聞いたことのない言葉。人間の喉から出る音じゃない。<br>
+      ——唇が動くたびに、空間が歪む。光が歪む。<br>
+      ——時間が軋む——<span class="bold">何かが、書き換えられていく</span>。<br>
+      ——世界の輪郭が溶けて、別のかたちに固まろうとしている——</p>
+      <p>映像が途切れる。目の前にKPCの顔がある。覗き込んでいる。泣きそうな顔。</p>
+    </div>
+    <div class="callout proc">
+      <p><span class="bold" style="color:var(--danger)">SANチェック：1/1d3</span></p>
+    </div>
+    <div class="kpc-reaction">
+      <span class="label">KPCの告白</span>
+      <p>KPCはPCの表情を見て、悟る。俯いて、しばらく黙って、震える声で話し始める。</p>
+      <p>「……俺がやった。<br>
+      お前が死にかけた時、頭の中に——声が流れ込んできた。誰の声かも分からない。<br>
+      呪文だったんだと思う。意味なんか分かんなかった。<br>
+      でも唱えたら——お前が息をした。目を開けた。<br>
+      ……助かったって思った。よかったって思った。<br>
+      でも、<span class="bold">そのせいで、あいつらが来てる</span>。<br>
+      角から——ずっと。俺を見てる。俺のせいで」</p>
+      <p class="text-sm">※KPCは自分を責めている。PCを助けたことは後悔していないが、代償にPCを巻き込んだことに罪悪感がある。</p>
+    </div>
+  </section>
+
+  <!-- ============================== PHASE 3 ============================== -->
+  <section id="ph3">
+    <h2><span class="phase-num">Phase 3</span> 探索（前日・夜）</h2>
+
+    <h3>イベント1：図書館で『金枝篇』を探す</h3>
+    <div class="kpc-reaction">
+      <span class="label">KPCの反応（道中）</span>
+      <p>「あの人、"金枝篇"って言ってたよな。民俗学の棚。——行こう。手がかりがあるかもしれない」</p>
+      <p>「俺も探す。お前一人にしない。——もう一人にはしない」</p>
+    </div>
+    <div class="callout read">
+      <p>図書館に着く。閉館まであまり時間がない。<br>
+      蛍光灯の白い光。静かな館内。本の匂い。ここだけは、外の不安が少しだけ薄い気がする。</p>
+      <p>民俗学の棚を探す。——あの専門家が言っていた。<br>
+      「フレイザーの『金枝篇』」「誕生日」「通過儀礼」「祝祭」。<br>
+      端末にキーワードを入力する指が、微かに震えている。</p>
+    </div>
+    <div class="callout proc">
+      <p><span class="bold">図書館</span>判定。<br>
+      PLが「金枝篇を探す」と宣言していれば<span class="bold" style="color:var(--success)">自動成功</span>（専門家のヒント報酬）。</p>
+    </div>
+
+    <h3>イベント2：金枝篇の発見（解決策）</h3>
+    <div class="callout read">
+      <p>民俗学の棚の奥。背表紙が色褪せた分厚い一冊。<br>
+      『<span class="bold">金枝篇</span>』——あの専門家が言っていた本だ。埃を被っている。</p>
+      <p>ページをめくる。「誕生日」「魂」——あたりの記述が、手に吸い付くように見つかる。</p>
+      <div style="background:rgba(0,0,0,0.03); padding:16px; border-radius:4px; font-family:var(--font-mono); font-size:0.9rem; margin:12px 0; border:1px solid var(--border);">
+「誕生日は、魂が最も曖昧になる日である」<br>
+「生と死の境界が薄くなり、存在が揺らぐ」<br>
+「古来、多くの文化圏において、誕生日に灯を囲み歌を歌い祝福を贈る風習があるが、これは単なる慣習ではない」<br>
+「この日に祝福を受けることで、魂は強固になる」<br>
+「"あなたはここにいる"という承認が、存在を確定させる」
+      </div>
+      <p>本から目を上げる。</p>
+      <p>——明日は、自分の誕生日だ。<br>
+      誕生日を迎えて、祝福を受ければ、存在が確定する。<br>
+      つまり——<span class="bold">日付が変わる0:00まで生き延びれば、勝てる</span>。</p>
+    </div>
+    <div class="callout kp">
+      <span class="label">解決策の提示</span>
+      <span class="bold">0:00（誕生日）まで生き延びして、KPCに祝ってもらえば助かる</span>と理解させる。
+    </div>
+    <div class="kpc-reaction">
+      <span class="label">KPCの反応</span>
+      <p>「誕生日……明日だろ。祝福を受ければ、確定する……？ ——じゃあ、やることは決まってる」（顔に初めて、希望の色が見える）</p>
+      <p>「やるしかない。今夜を越えよう。——俺がお前を祝う。絶対に」</p>
+    </div>
+
+    <h3>イベント3：夜が迫る</h3>
+    <div class="callout read">
+      <p>図書館を出る。</p>
+      <p>外は、もう暗かった。いつの間にか日が落ちている。街灯がぽつぽつと灯り、人通りが減っている。</p>
+      <p>街灯の下、影が濃い。建物の角という角が、昼間より一段暗く見える。<br>
+      どの角も。どの影も。こちらを見ている気がする。</p>
+      <p>自分の手を見る。輪郭が、さらにぼやけている。指先の境界が空気に溶けかけている。<br>
+      時間がない。それは、身体が一番よく分かっている。</p>
+      <p>KPCが隣に立つ。肩がぶつかるくらい近く。</p>
+      <p>「<span class="bold">今夜を、越えよう</span>」</p>
+    </div>
+  </section>
+
+  <!-- ============================== PHASE 4 ============================== -->
+  <section id="ph4">
+    <h2><span class="phase-num">Phase 4</span> 持久戦（前日・夜〜深夜）</h2>
+    
+    <div class="flow-guide">
+      <h4>進行ガイド：時間の経過と緊張感</h4>
+      <ul>
+        <li><span class="bold">場所</span>：KPCの家、またはPCの家（魔法陣を描ける場所）。</li>
+        <li><span class="bold">流れ</span>：19:00開始 → 21:00 → 23:00 → 23:50 と時間を進めながら、定期的に「猟犬の襲来（判定）」を行う。</li>
+        <li><span class="bold">手詰まり防止</span>：PLがただ待つだけにならないよう、KPCに「何かできることはないか？ 新聞を燃やすとか」と提案させる。</li>
+      </ul>
+    </div>
+
+    <h3>行動：「生きてる世界」を濃くする</h3>
+    <div class="callout proc">
+      <p>「新聞を燃やす」「写真を消す」「SNSに投稿する」などの行動で、以後の回避判定に<span class="bold" style="color:var(--success)">+10〜20%のボーナス</span>。</p>
+    </div>
+    <div class="kpc-reaction">
+      <span class="label">KPCからの提案</span>
+      <p>「この新聞、燃やそう。こいつがある限り、"あっちの世界"が残ってる。証拠を消すんだ」</p>
+      <p>「爆発音——何か別の理由つけられないか。ガス管の点検とか。なんでもいい。"爆発なんてなかった"って世界を、こっちから作るんだ」</p>
+    </div>
+
+    <h3>イベント：猟犬回避（数回繰り返す）</h3>
+    <div class="callout read">
+      <span class="label" style="font-weight:700; color:var(--read-accent);">読み上げ（1回目 19:00頃）</span>
+      <p>不意に、空気が変わる。<br>
+      さっきまで聞こえていた虫の声が、ぴたりと止む。風が死ぬ。<br>
+      息を吸うと、肺の奥が痛い——<span class="bold">鉄の匂い</span>がする。<br>
+      角が暗くなる。暗がりの中に——<span class="bold">何かがいる</span>。</p>
+    </div>
+    <div class="callout read">
+      <span class="label" style="font-weight:700; color:var(--read-accent);">読み上げ（2回目以降 バリエーション）</span>
+      <ul style="font-family: var(--font-mono); font-size: 0.9em;">
+        <li>「足音が聞こえる。自分たちのものじゃない。一拍遅れて、同じリズムで。……振り返ると、止まる」</li>
+        <li>「街灯がちらつく. 明滅の合間に、角の向こう側に何かの輪郭が——次に点いた時には消えている」</li>
+        <li>「首筋が粟立つ。呼吸が白い。——夏なのに。空気の温度だけが、ここだけ違う」</li>
+        <li>「影が揺れる。自分の影が——<span class="bold">自分と違う方向を向いている</span>。一瞬だけ。でも確かに」</li>
+      </ul>
+    </div>
+    <div class="callout proc">
+      <p><span class="bold">隠密 / 幸運</span>などで判定。<br>
+      <span class="bold" style="color:var(--danger)">失敗</span>：気配が濃くなりSAN減少（0/1d3）。3回失敗で顕現。</p>
+    </div>
+
+    <h3>最後の手段：五芒星の魔法陣</h3>
+    <div class="callout read">
+      <p>床にチョークで——いや、何でもいい、あるもので——線を引く。<br>
+      円を描く。五芒星を刻む。手が震えて線が歪む。やり直す。<br>
+      KPCが反対側から線を引く。二人で、一つの陣を描いていく。</p>
+      <p>描き終えた瞬間、空気が変わる. 陣の中だけ——ほんの少しだけ、暖かい。<br>
+      二人で、五芒星の中に座る。肩が触れる。お互いの体温が伝わってくる。</p>
+      <p>外では、何かが這い回る気配がする。爪が床を引っ掻く音。低い唸り。<br>
+      でも、<span class="bold">見つからない</span>。魔法陣が守っている。</p>
+    </div>
+
+    <h3>クライマックス：カウントダウン</h3>
+    <div class="callout read">
+      <span class="label" style="font-weight:700; color:var(--read-accent);">23:50</span>
+      <p>猟犬の気配が、最も濃くなる。<br>
+      魔法陣の外で、何かが円を描くように動いている。<br>
+      壁が軋む. 天井が軋む. 何かの重さが、部屋全体にのしかかっている。</p>
+      <hr style="border: 0; border-top: 1px dashed var(--border); margin: 16px 0;">
+      <span class="label" style="font-weight:700; color:var(--read-accent);">23:55</span>
+      <p>PCの手を見る。<br>
+      輪郭が——ほとんど見えない. 指の形が空気に溶けかけている。<br>
+      KPCがPCの手を握る. 見えなくても——<span class="bold">触れれば、確かにそこにある</span>。<br>
+      KPCの手が、強く握りしめている. 痛いくらいに。</p>
+      <hr style="border: 0; border-top: 1px dashed var(--border); margin: 16px 0;">
+      <span class="label" style="font-weight:700; color:var(--read-accent);">23:59</span>
+      <p>猟犬の気配が、魔法陣のすぐ外まで来る。<br>
+      吐息が聞こえる. 低い、獣のような息遣い。<br>
+      陣の線が、微かに震えている. あと、1分。</p>
+    </div>
+    <div class="kpc-reaction">
+      <span class="label">KPCのセリフ（23:55）</span>
+      <p>「消えるな——！ 俺はお前を見てる。お前はここにいる。消えるな……！」（PCの手を両手で握る）</p>
+      <p>「あと5分だ。5分だけ持ってくれ。頼む。——頼むから、ここにいてくれ」（声が掠れている）</p>
+    </div>
+  </section>
+
+  <!-- ============================== PHASE 5 ============================== -->
+  <section id="ph5">
+    <h2><span class="phase-num">Phase 5</span> 誕生日（0:00）</h2>
+    
+    <div class="callout read" style="text-align:center; padding:32px;">
+      <p class="text-sm" style="margin-bottom:8px;">0:00ジャスト</p>
+      <p class="bold" style="font-size:1.4rem;">「——誕生日、おめでとう」</p>
+    </div>
+
+    <div class="callout read">
+      <p>その瞬間——何かが変わる。</p>
+      <p>PCの手を見る. 輪郭が——<span class="bold">はっきりしている</span>。<br>
+      指先の一本一本が、爪の形が、手のひらの皺が、くっきりと見える。<br>
+      さっきまで空気に溶けかけていた自分の身体が、確かな質量を取り戻している。</p>
+      <p><span class="bold">「この人は、ここにいる」</span></p>
+      <p>世界が——それを採用する。</p>
+      <p>二つ重なっていた世界が、音もなく一つになる。<br>
+      下書きが消える. 確定稿だけが残る。<br>
+      <span class="bold">この世界では、事故は起きなかった. PCは生きている. ここにいる</span>。</p>
+      <p>猟犬の気配が、すっと遠ざかっていく. 壁の軋みが止まる。<br>
+      空気が——軽い. 夜の、普通の空気。<br>
+      角を見る. ただの角だ. 暗くない. 何もいない。</p>
+    </div>
+    <div class="callout proc">
+      <p><span class="bold" style="color:var(--success)">SAN回復：1d6</span></p>
+    </div>
+    <div class="kpc-reaction">
+      <span class="label">KPCの反応</span>
+      <p>「……消えた。気配が、消えた。……あは、は」（力が抜けて、その場にへたり込む）</p>
+      <p>「見える。お前の輪郭、はっきりしてる。——見えるよ。お前、ちゃんとここにいる」（PCの顔を両手で挟んで、まじまじと見る）</p>
+    </div>
+    
+    <h3>エンディング</h3>
+    <div class="callout read">
+      <span class="label" style="font-weight:700; color:var(--read-accent);">夜明け</span>
+      <p>二人は、五芒星の中で朝を迎える。</p>
+      <p>窓の外が、ゆっくりと白み始めている. 最初は灰色. それから薄い橙. そして——朝日。<br>
+      暖かい光が、部屋に差し込んでくる。</p>
+      <p>魔法陣のチョークの線が、朝日に照らされている。<br>
+      昨夜あれほど恐ろしかった部屋が、ただの——部屋だ。</p>
+      <p>KPCが、ぽつりと言う。<br>
+      「……<span class="bold">生きてるな</span>」</p>
+      <p>PCは自分の手を見る. 輪郭ははっきりしている。<br>
+      「ああ。生きてる」</p>
+    </div>
+    <div class="callout read">
+      <span class="label" style="font-weight:700; color:var(--read-accent);">日常への帰還</span>
+      <p>朝日が窓いっぱいに広がる. 鳥が鳴いている. 普通の朝の音。</p>
+      <p>KPCが、重い体を引きずるように立ち上がる. 背伸びをして、骨がぱきぱきと鳴る。</p>
+      <p>「<span class="bold">腹減ったな. なんか食べに行くか</span>」</p>
+      <p>何気ない一言. 特別じゃない会話. 昨日までと同じ——日常の続き。<br>
+      二人で歩き出す. 外に出ると、朝の空気は少しだけ冷たくて、でも気持ちがいい。</p>
+      <p class="text-sm">これは、世界を救った話ではない. 敵を倒した話でもない。<br>
+      互いを犠牲にして守り合った二人が、今度は一緒に生き延びることを選んだ話だ。<br>
+      そして、誕生日は続いていく。</p>
+    </div>
+    <div class="kpc-reaction">
+      <span class="label">KPC最後の一言</span>
+      <p>「腹減ったな. なんか食べに行くか. ——お前の奢りな. 誕生日だろ」</p>
+      <p>「最悪の誕生日だったな. ……来年はもっとマシにしような. 約束する」</p>
+      <p>「……ありがとな. 生きててくれて. ——さ、行くぞ. どこ行きたい？」</p>
+    </div>
+  </section>
+
+  <!-- ============================== HOUND TABLE ============================== -->
+  <section id="hound">
+    <h2>猟犬運用表</h2>
+    <div class="callout kp">
+      <span class="label">基本は「気配」で十分</span>
+      <table style="margin-bottom:0;">
+        <thead><tr><th style="width:15%">段階</th><th>描写バリエーション</th><th style="width:25%">運用</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><span class="bold">①兆候</span></td>
+            <td>
+              ・角が一段暗い. 影が"溜まっている"<br>
+              ・虫や鳥の声がぴたりと止む<br>
+              ・時計の秒針が一瞬だけ止まる（気のせいかもしれない）<br>
+              ・遠くで犬が吠えている——ように聞こえる
+            </td>
+            <td>回避判定の予告。<br>雰囲気作り。</td>
+          </tr>
+          <tr>
+            <td><span class="bold">②接近</span></td>
+            <td>
+              ・息が白い（季節外れ）. 空気が5度下がったように冷たい<br>
+              ・鉄の匂い. 雨の匂い. 錆びた血の匂い<br>
+              ・足音. 自分たちのじゃない. 一拍遅れて同じリズム<br>
+              ・影が自分と違う方向を向いている<br>
+              ・首筋に息がかかる感触. 振り返ると——何もいない
+            </td>
+            <td>回避判定。<br>失敗でSAN 0/1d3。<br><span class="bold">基本ここ止め。</span></td>
+          </tr>
+          <tr>
+            <td><span class="bold">③顕現</span><br>(任意)</td>
+            <td>
+              ・角の"向こう"に黒い輪郭. 犬に似ている. 犬ではない<br>
+              ・街灯の明滅の合間に、四足で這うものの影が壁に映る<br>
+              ・低い唸り声. 空気が振動する. 胃の底が震える<br>
+              ・PCの影の中に、もう一つの影が重なっている
+            </td>
+            <td>終盤演出用。<br>SAN 1d6/1d20。<br>逃走猶予を残す。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ============================== PL INFO ============================== -->
+  <section id="pre-scenario">
+    <h2><span class="phase-num">Appendix</span> 参加PLへのストーリー要約（通過後／ネタバレ）</h2>
+    <div class="card" style="font-family:var(--font-mono); font-size:0.85rem; background:#f9f9f9;">
+【ストーリー要約（通過後に共有）】
+本来、PCは「一昨日」の事故で命を落としていた。
+しかしKPCは、咄嗟に“呪文”のようなものを唱え、PCをこの世に繋ぎ止めてしまう。
+その結果、世界は「事故が起きた世界」と「起きなかった世界」の間で揺れ、PCの存在は曖昧になっていった。
+
+歪みは“猟犬”を呼び、二人は「角の暗さ」や視線の気配に追われながら、世界を確定させる手がかりを探す。
+やがて民俗学の知識から、誕生日の“祝福”が存在を確定させる鍵だと分かる。
+
+0:00。KPCがPCに「誕生日おめでとう」と祝福を贈った瞬間、PCの輪郭は戻り、世界は「PCが生きている」側へと確定する。
+歪みは収束し、猟犬の気配は消え、二人は日常へ帰っていった。
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
